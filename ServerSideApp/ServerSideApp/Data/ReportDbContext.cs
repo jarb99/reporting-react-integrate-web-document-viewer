@@ -37,7 +37,6 @@ namespace ServerSideApp.Data {
                 JsonDataConnections.Add(newData);
             }
 
-
             var nwindSqlDataConnectionName = "NWindConnectionString";
             if(!SqlDataConnections.Any(x => x.Name == nwindSqlDataConnectionName)) {
                 var newData = new SqlDataConnectionDescription {

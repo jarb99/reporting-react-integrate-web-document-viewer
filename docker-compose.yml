@@ -1,0 +1,21 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  serversideapp:
+    image: serversideapp
+    build:
+      context: .
+      dockerfile: ServerSideApp/ServerSideApp/Dockerfile
+    ports:
+      - 62359:62359
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:62359
+      - ASPNETCORE_HTTPS_PORTS=62359
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=StrongPassword1
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ${HOME}/.aspnet/https:/https/
+
